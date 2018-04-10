@@ -1,0 +1,29 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "Create Regional Bucket",
+  "Parameters": {
+    "BucketName": {
+      "Type": "String"
+    },
+    "Second": {
+      "Type": "String"
+    }
+  },
+  "Resources": {
+    "RegionalBucket": {
+      "Type": "AWS::S3::Bucket",
+      "Properties": {
+        "BucketName": {
+          "Ref": "BucketName"
+        }
+      }
+    }
+  },
+  "Outputs": {
+    "Second": {
+      "Value": {
+        "Ref": "Second"
+      }
+    }
+  }
+}
