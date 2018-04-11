@@ -14,9 +14,9 @@ It is easy to create sub-stacks in CloudFormation as long as they are in same re
 In some cases, there is need to create stack in region different than region where
 parent stack is being create, or for example, to create same stack in multiple regions.
 Such (sub)stack lifecycle can be controlled via custom resource having it's code in
-`src/regional-cfn-stack` folder
+`regional-cfn-stack` folder
 
-handler: `src/regional-cfn-stack/handler.lambda_handler`
+handler: `regional-cfn-stack/handler.lambda_handler`
 runtime: `python3.6`
 
 Required parameters:
@@ -40,7 +40,7 @@ with `*.zip` extensions, this object will be unpacked before it's files are unpa
 Please note that this lambda function design does not include recursive calls if lambda is timing out, thus it does not
 permit mass file unpacking, but is rather designed for deployment of smaller files, such as client side web applications.
 
-handler: `src/s3-copy/handler.lambda_handler`
+handler: `3-copy/handler.lambda_handler`
 runtime:  `python3.6`
 
 Required parameters:
