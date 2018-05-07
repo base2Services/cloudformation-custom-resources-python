@@ -59,6 +59,7 @@ runtime:  `python3.6`
 
 Required parameters:
 
+- `Name` - Custom Resource name.
 - `RegexPatterns` - List format, regex pattern to match.
 - `Type` - The part of the web request that you want AWS WAF to search for a specified string
 - `Data` - Data such as when the value of Type is HEADER , enter the name of the header that you want AWS WAF to search, for example, User-Agent or Referer

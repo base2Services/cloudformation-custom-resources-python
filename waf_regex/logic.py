@@ -11,13 +11,13 @@ logger.setLevel(logging.INFO)
 
 class WafRegexLogic:
 
-    def __init__(self, name, resource_properties):
+    def __init__(self, resource_properties):
         self.regex_patterns = resource_properties['RegexPatterns']
         self.match_type = resource_properties['Type']
         self.match_data = resource_properties['Data']
         self.transform = resource_properties['Transform']
-        self.match_name = name
-        self.pattern_name = f"{name}-pattern"
+        self.match_name = resource_properties['Name']
+        self.pattern_name = f"{resource_properties['Name']}-pattern"
         self.client = boto3.client('waf-regional')
 
     def new_pattern_set(self):
