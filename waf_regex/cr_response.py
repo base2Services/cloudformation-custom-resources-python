@@ -15,12 +15,13 @@ class CustomResourceResponse:
             "Status": 'SUCCESS',
         }
 
+
     def respond_error(self, message):
         self.response['Status'] = 'FAILED'
         self.response['Reason'] = message
         self.respond()
 
-    def respond(self):
+    def respond(self, data):
         event = self.payload
         response = self.response
         ####
@@ -35,7 +36,7 @@ class CustomResourceResponse:
 
         serialized = json.dumps(response)
         logger.info(f"Responding to {event['RequestType']} request with: {serialized}")
-
+        response["Data"] = data
         req_data = serialized.encode('utf-8')
 
         req = Request(

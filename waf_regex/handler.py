@@ -23,17 +23,25 @@ def lambda_handler(event, context):
         if event['RequestType'] == 'Create':
             print("Create request")
             event['PhysicalResourceId'] = waf_logic.new_match_set()
-            lambda_response.respond()
+            data = {
+                "MatchID" : event['PhysicalResourceId']
+            }
+            lambda_response.respond(data)
 
         elif event['RequestType'] == 'Update':
             print("Update request")
             waf_logic.update_match_set(event['PhysicalResourceId'])
-            lambda_response.respond()
+            data = {
+                "MatchID" : event['PhysicalResourceId']
+            }
+            lambda_response.respond(data)
 
         elif event['RequestType'] == 'Delete':
             print(event['PhysicalResourceId'])
             waf_logic.remove_match_set(event['PhysicalResourceId'])
             print("Delete request")
+            data = { }
+            lambda_response.respond(data)
 
     except Exception as e:
         message = str(e)
