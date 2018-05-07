@@ -16,8 +16,7 @@ def lambda_handler(event, context):
 
     lambda_response = cr_response.CustomResourceResponse(event)
     cr_params = event['ResourceProperties']
-    match_name = event['LogicalResourceId']
-    waf_logic = WafRegexLogic(match_name , cr_params)
+    waf_logic = WafRegexLogic(cr_params)
     try:
         # if create request, generate physical id, both for create/update copy files
         if event['RequestType'] == 'Create':
