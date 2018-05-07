@@ -19,7 +19,7 @@ class CustomResourceResponse:
     def respond_error(self, message):
         self.response['Status'] = 'FAILED'
         self.response['Reason'] = message
-        self.respond()
+        self.respond({})
 
     def respond(self, data):
         event = self.payload
