@@ -34,9 +34,11 @@ class CustomResourceResponse:
         logger.debug("Received %s request with event: %s" %
                      (event['RequestType'], json.dumps(event)))
 
-        serialized = json.dumps(response)
-        logger.info(f"Responding to {event['RequestType']} request with: {serialized}")
         response["Data"] = data
+
+        serialized = json.dumps(response)
+        
+        logger.info(f"Responding to {event['RequestType']} request with: {serialized}")
         req_data = serialized.encode('utf-8')
 
         req = Request(
