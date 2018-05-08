@@ -52,10 +52,10 @@ No optional parameters.
 
 ### Create Regex Waf Rules
 
-This custom resource allows create/update/delete match regex rules.
+This custom resource allows create/update/delete match regex rules with regex a pattern set.
 
 handler: `waf_regex/handler.lambda_handler`
-runtime:  `python3.6`
+runtime: `python3.6`
 
 Required parameters:
 
@@ -64,3 +64,4 @@ Required parameters:
 - `Type` - The part of the web request that you want AWS WAF to search for a specified string
 - `Data` - Data such as when the value of Type is HEADER , enter the name of the header that you want AWS WAF to search, for example, User-Agent or Referer
 - `Transform` - Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass AWS WAF.
+Implementation require to be serialised with other waf condition.
