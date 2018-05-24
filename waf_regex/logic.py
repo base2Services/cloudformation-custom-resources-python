@@ -136,8 +136,9 @@ class WafRegexLogic:
         match_set_object = self.get_match_set(match_set_id)
 
         for match_tuple in match_set_object['RegexMatchSet']['RegexMatchTuples']:
-            self.delete_match_set(match_set_id,match_tuple)
-            self.remove_pattern_set(match_tuple['RegexPatternSetId'])
+            if bool(match_tuple):
+                self.delete_match_set(match_set_id,match_tuple)
+                self.remove_pattern_set(match_tuple['RegexPatternSetId'])
 
         changeToken = self.client.get_change_token()
         response = self.client.delete_regex_match_set(
