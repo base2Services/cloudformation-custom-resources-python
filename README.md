@@ -6,6 +6,22 @@ AWS CloudFormation. You may find some of these CloudFormation resources obsolete
 as AWS team fills in the gaps. There is also some more complex ones, or developed
 to suite specific needs, such as copying s3 objects between buckets
 
+
+[Collection of custom resources for Node.js can be found here](https://github.com/base2Services/cloudformation-custom-resources-nodejs)
+
+
+## Usage
+
+Clone the repository, install the dependencies, and zip up the folder as Lambda Deployment package.
+Note that `boto3` is not packaged as dependency, as it is available in Lambda runtime itself by default.
+
+```
+git clone https://github.com/base2Services/cloudformation-custom-resources-python.git && \
+cd cloudformation-custom-resources-python && \
+docker run --rm -v $PWD:/src -w /src python:3.6 pip install -r requirements.txt -t . && \
+zip -r ~/cfn-ccr-python3.6.zip .
+```
+
 ## Custom resources
 
 ### Creating CloudFormation stack in specific region
